@@ -2,8 +2,8 @@
 
 const list = document.querySelector('ul');
 
-function sortList() {
-  const items = [...list.querySelectorAll('li')];
+function sortList(listToUpdate) {
+  const items = [...listToUpdate.querySelectorAll('li')];
   const sorted = items.sort((a, b) => {
     const salaryA = Number(a.dataset.salary.replace(/[$,]/g, ''));
     const salaryB = Number(b.dataset.salary.replace(/[$,]/g, ''));
@@ -11,12 +11,12 @@ function sortList() {
     return salaryB - salaryA;
   });
 
-  list.innerHTML = '';
-  sorted.forEach((item) => list.appendChild(item));
+  listToUpdate.innerHTML = '';
+  sorted.forEach((item) => listToUpdate.appendChild(item));
 }
 
-function getEmployees() {
-  const items = [...list.querySelectorAll('li')];
+function getEmployees(listToUpdate) {
+  const items = [...listToUpdate.querySelectorAll('li')];
 
   return items.map((li) => ({
     name: li.textContent,
